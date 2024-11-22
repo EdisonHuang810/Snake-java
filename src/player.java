@@ -5,11 +5,15 @@ public class player implements KeyListener {}
     public int colPosition;
     boolean keyPressed = false;
 
-    public void KeyTyped(KeyEvent d){
+    public void keyPressed(KeyEvent d){
         keyPressed = true;
         while(keyPressed){
             rowPosition ++;
         }
+    public void keyReleased(){
+        keyPressed = false;
+    }
+    
 
     }
 
