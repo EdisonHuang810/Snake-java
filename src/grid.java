@@ -1,8 +1,10 @@
 public class grid{
-public static void main(String[] args){
+    public static void main(String[] args){
+
     int rows = 7;
     int cols = 15;
     char[][] grid = new char[rows][cols];
+    
     
 
 
@@ -11,7 +13,7 @@ public static void main(String[] args){
             grid[i][k] = '*';
         }
     }
-    grid[3][3] = 'O';
+    char player = grid[3][3];
     
     for(int i=0;i<rows;i++){
         for(int k=0;k<cols;k++){
@@ -19,7 +21,10 @@ public static void main(String[] args){
         }
         System.out.println("");
     }
+
 }
+
+
 
     }
 
