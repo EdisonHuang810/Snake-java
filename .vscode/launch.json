@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Snake",
+            "request": "launch",
+            "mainClass": "Snake",
+            "projectName": "Snake_aabee368"
+        },
+        {
+            "type": "java",
+            "name": "SnakeGame",
+            "request": "launch",
+            "mainClass": "SnakeGame",
+            "projectName": "Snake_aabee368"
+        },
+        {
+            "type": "java",
+            "name": "SnakeConsoleGame",
+            "request": "launch",
+            "mainClass": "SnakeConsoleGame",
+            "projectName": "Snake_aabee368"
+        },
+        {
+            "type": "java",
+            "name": "GridGame",
+            "request": "launch",
+            "mainClass": "GridGame",
+            "projectName": "Snake_aabee368"
+        },
+        {
+            "type": "java",
             "name": "grid",
             "request": "launch",
             "mainClass": "grid",
