@@ -76,6 +76,7 @@ public class Snake {
             case 'D': playerBody.set(0, new int[]{head[0], head[1] + 1}); break;
         }
     }
+
     public static void checkSelfCollision() {
         // Only check for self-collision if the snake has more than 1 segment
         if (playerBody.size() > 1) {
@@ -90,7 +91,6 @@ public class Snake {
             }
         }
     }
-    
 
     public static void printGrid(){
         String[][] grid = new String[rows][columns];
@@ -121,7 +121,6 @@ public class Snake {
             System.out.println(""); // get an extra row every time.
         }
     }
-    
 
     public static void touchApple(){
         if (playerBody.get(0)[0] == applePosition[0] && playerBody.get(0)[1] == applePosition[1]) {
