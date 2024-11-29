@@ -29,7 +29,6 @@ public class Snake {
 
         while(playerAlive){ //Constantly detecting stuff like void Update()
             touchApple();
-            checkSelfCollision();
             movePlayer();
             if (playerBody.get(0)[0] < 0 || playerBody.get(0)[0] >= rows ||
                 playerBody.get(0)[1] < 0 || playerBody.get(0)[1] >= columns) {
@@ -77,20 +76,7 @@ public class Snake {
         }
     }
 
-    public static void checkSelfCollision() {
-        // Only check for self-collision if the snake has more than 1 segment
-        if (playerBody.size() > 1) {
-            int[] head = playerBody.get(0);  // Get the head position
-            // Check if the head's position matches any body segment (except for the head itself)
-            for (int i = 1; i < playerBody.size(); i++) {
-                int[] bodyPart = playerBody.get(i);
-                if (head[0] == bodyPart[0] && head[1] == bodyPart[1]) {
-                    playerAlive = false;  // If collision happens, end the game
-                    break;
-                }
-            }
-        }
-    }
+    
 
     public static void printGrid(){
         String[][] grid = new String[rows][columns];
