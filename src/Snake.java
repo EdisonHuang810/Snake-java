@@ -27,22 +27,26 @@ public class Snake {
         frame.setVisible(true);
         setupPlayerInput(frame);
 
-        while(playerAlive){ //Constantly detecting stuff like void Update()
+        while(playerAlive){ // Constantly detecting updates like void Update()
             touchApple();
             movePlayer();
             if (playerBody.get(0)[0] < 0 || playerBody.get(0)[0] >= rows ||
                 playerBody.get(0)[1] < 0 || playerBody.get(0)[1] >= columns) {
-                playerAlive = false; //detect if player dies
+                playerAlive = false; // Detect if player dies
+                break; // Exit the loop immediately
             }
             clearScreen();
             printGrid();
-
+           
             try {
-                Thread.sleep(500); //stop the inf loop
+                Thread.sleep(500); // Stop the infinite loop
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        System.out.println("Game Over!");
+        System.out.println("Score: " + score);
+        System.out.println("Rank: " + getRank(score)); 
     }
 
     public static void setupPlayerInput(JFrame frame) { //this is all the playerInput from Jframe (chatgpt)
@@ -78,35 +82,41 @@ public class Snake {
 
     
 
-    public static void printGrid(){
+    public static void printGrid() {
         String[][] grid = new String[rows][columns];
     
         // Initialize the grid with empty spaces
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < columns; j++){
-                grid[i][j] = "[ ]"; // set grid to empty space [ ]
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                grid[i][j] = "[ ]"; // Set grid to empty space
             }
         }
     
-        // First, place the player in the grid
+        // Place the player (snake) on the grid
         for (int i = 0; i < playerBody.size(); i++) {
             int[] segment = playerBody.get(i);
-            grid[segment[0]][segment[1]] = "[O]"; // Mark the snake's body
+            if (segment[0] >= 0 && segment[0] < rows && segment[1] >= 0 && segment[1] < columns) {
+                grid[segment[0]][segment[1]] = "[O]"; // Mark the snake's body
+            }
         }
     
-        // Then, place the apple, but only if there's no player in that spot
-        if (grid[applePosition[0]][applePosition[1]].equals("[ ]")) {
-            grid[applePosition[0]][applePosition[1]] = "[*]"; // set the apple [ * ]
+        // Place the apple, but only if it's within bounds
+        if (applePosition[0] >= 0 && applePosition[0] < rows &&
+            applePosition[1] >= 0 && applePosition[1] < columns) {
+            if (grid[applePosition[0]][applePosition[1]].equals("[ ]")) {
+                grid[applePosition[0]][applePosition[1]] = "[*]"; // Mark the apple
+            }
         }
     
         // Print the grid
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < columns; j++){
-                System.out.print(grid[i][j]); // print the grid
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(grid[i][j]);
             }
-            System.out.println(""); // get an extra row every time.
+            System.out.println(); // Newline after each row
         }
     }
+    
 
     public static void touchApple(){
         if (playerBody.get(0)[0] == applePosition[0] && playerBody.get(0)[1] == applePosition[1]) {
